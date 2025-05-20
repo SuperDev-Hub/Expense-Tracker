@@ -1,0 +1,5 @@
+Income,Business,3000000.0,2025-05-06
+Income,Salary,2000200.0,2025-05-17
+Income,Salary,262565.0,2025-04-13
+Expense,Rent,3454.0,2025-04-14
+Income,Salary,3929288.0,2024-07-14
