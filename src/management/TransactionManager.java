@@ -16,20 +16,28 @@ public class TransactionManager {
 
     public void showMonthlySummary(int year, int month) {
         double income = 0, expense = 0;
-        System.out.println("\n--- Monthly Summary for " + Month.of(month) + " " + year + " ---");
+        boolean hasTransactions = false;
 
         for (Transaction t : transactions) {
             if (t.getDate().getYear() == year && t.getDate().getMonthValue() == month) {
+                hasTransactions = true;
                 if (t.getType().equalsIgnoreCase("Income")) {
                     income += t.getAmount();
-                } else {
+                } else if (t.getType().equalsIgnoreCase("Expense")) {
                     expense += t.getAmount();
                 }
             }
         }
 
-        System.out.println("Total Income: ₹" + income);
-        System.out.println("Total Expense: ₹" + expense);
-        System.out.println("Net Savings: ₹" + (income - expense));
+        System.out.println("\n--- Monthly Summary for " + Month.of(month) + " " + year + " ---");
+
+        if (!hasTransactions) {
+            System.out.println(" No transactions found for this month.");
+            return;
+        }
+
+        System.out.printf(" Total Income  : ₹%.2f%n", income);
+        System.out.printf(" Total Expense : ₹%.2f%n", expense);
+        System.out.printf(" Net Savings   : ₹%.2f%n", (income - expense));
     }
 }
